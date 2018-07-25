@@ -1,0 +1,11 @@
+// Convert px to rem
+@function remy($val) {
+	$val: $val / 16;
+	@return $val * 1rem;
+}
+
+//path for images
+@function path($src, $dir: img) {
+	$src: unquote($src);
+	@return url(unquote("..")/$dir/$src);
+}

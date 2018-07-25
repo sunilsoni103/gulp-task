@@ -1,0 +1,319 @@
+html { font-size: 100%; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  transition: all ease .5s;
+  cursor: url("../images/cursor.png") 3 3, auto !important;
+}
+
+p:last-child { margin-bottom: 0; }
+
+.main-title-bar {
+  padding: 25px;
+  background: $color-grey-light;
+  color: $color-main;
+  display: flex;
+  justify-content: center;  
+  @include break(768px) { padding: 25px 0; }
+  ul {
+    margin-bottom: 0;
+    @include break(480px, 575px) { justify-content: space-between; display: flex; width: 100%; }
+  }
+  li {
+    display: inline-block;
+    list-style: none;
+    font-size: 20px;    
+    margin-bottom: 20px;    
+    @include break(480px) { margin-bottom: 0; }
+    @include break(576px) { margin-right: 60px; }
+    &:last-child {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+    span {
+      width: 37px;
+      display: inline-block;
+      font-weight: bold;
+      text-align: center;
+      line-height: 33px;
+      border-radius: 100%;
+      border: 2px solid #a1a7b3;
+      color: #a1a7b3;
+      margin-right: 20px;
+    }
+    &.active span {
+      background: #64d88d;
+      color: #fff;
+      border-color: #64d88d;
+    }
+  }
+}
+
+.course-block {
+  margin: 50px auto;
+  box-shadow: 0 10px 50px #ccc;
+  position: relative;
+  width: 90%;
+  padding: remy(30);
+  border-radius: 0 0 10px 10px;
+  @include break(768px) {
+    margin: 100px auto;
+    width: 100%;
+    padding: 45px 80px;
+  }
+  &::after {
+    content: '';
+    width: 100%;
+    height: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: linear-gradient(to right, #f8ad86, #fddc85);
+    border-radius: 0 0 10px 10px;
+  }
+  .course-th {
+    background: #f2f6f9;
+    display: none;
+    @include break(992px) { display: flex; }
+    [class*=col-] {
+      padding: 25px;
+      color: #a1a7b3;
+      font-size: 20px;
+      font-weight: 500;
+      text-transform: uppercase;
+      position: relative;
+      text-align: center;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        height: 20px;
+        width: 2px;
+        background: #d6e3ea;
+        transform: translateY(-50%);
+      }
+      &:last-child::after {
+        background: none;
+      }
+      h5 { margin-bottom: 0; }
+    }
+  }
+}
+
+.course-info {
+  position: relative;
+  margin-bottom: 30px;
+  &::after {
+    @include position(absolute, $bottom: 0, $left: 50%);
+    content: '';
+    transform: translate(-50%);
+    width: 80%;
+    height: 2px;
+    background: $color-grey-light;
+  }  
+  @include break(768px) { margin-bottom: 38px; }
+  @include break(992px) {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  &:last-child {
+    &::after { background: none; }
+    margin-bottom: 0;
+  }
+  [class*=col-] {
+    padding-bottom: 30px;
+    color: #a1a7b3;
+    text-align: center;
+    
+    &:nth-child(3), &:last-child {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;      
+    }
+
+    @include break(768px) {
+      padding: 0 15px 38px;
+      text-align: left;
+    }
+
+    @include break(992px) {
+      padding: 38px 15px;
+    }
+    
+    h6 {
+      color: #a1a7b3;
+      a:hover {
+        color: #fcc534;
+        text-decoration: none;
+      }
+    }
+    
+    a {
+      color: #a1a7b3;
+    }
+    &:first-child {
+      justify-content: center;
+      display: flex;
+    }
+  }
+  .btn-trash {
+    font-size: 25px;
+    &:hover {
+      color: #fcc534;
+    }
+  }  
+}
+
+//PAYMENT ROW
+.payment-row {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  [class*=col-] {
+    margin-bottom: 30px;
+    &:first-child {
+      display: flex;
+      justify-content: center;
+    }
+    &:last-child { margin-bottom: 20px; }
+    @include break(576px) {
+    	display: flex;
+      align-items: center;
+      justify-content: space-around;      
+    }
+    @include break(768px) {
+      margin-bottom: 0;
+      &:last-child {
+        margin-bottom: 0;
+        justify-content: space-between;
+      }
+      &:first-child { justify-content: flex-start; }      
+    }
+    @include break(992px) {
+      &:last-child {
+        justify-content: flex-end;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .coupon-code {        
+    input[type="text"] {
+      background: #f2f6f9;
+      color: #a1a7b3;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      padding: 9px 20px;
+      max-width: 200px;
+      &:focus {
+        box-shadow: none;
+        outline: none;
+      }
+      &::placeholder {
+        color: #a1a7b3;
+      }
+    }
+    .btn-coupon-code {
+      background: #f2f6f9;
+      color: #a1a7b3;
+      border-radius: 0 5px 5px 0;
+      padding: 6.5px;
+      &:hover {
+        color: #fcc534;
+      }
+    }
+  }
+
+  .right-col {
+    text-align: center;
+    @include break(768px) { text-align: left; }
+  }
+
+  .payment-btn {
+    margin-top: 30px;
+    @include break(576px) { margin-top: 0; }
+    .btn {
+      background: linear-gradient(to right, #fcc534, #f37535);
+      color: #fff;
+      outline: none;
+      border: none;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-weight: 500;
+      transition: all ease .5s;
+      @include break(992px) { margin-left: 30px; }
+      @include break(1200px) { margin-left: 80px; }
+      &:hover {
+        background: linear-gradient(to right, #f37535, #fcc534);
+      }
+    }
+  }
+}
+
+//SNAP CURSOR
+.light, .shadow, .lightclick {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  height: 0px;
+  width: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+  backface-visibility: hidden;
+  z-index: 1100;
+  display: none;
+}
+
+.light-inner, .shadow-inner, .lightclick-inner {
+  opacity: 1;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-top: -25px;
+  margin-left: -25px;
+  z-index: 1100;
+  backface-visibility: hidden;
+  transition: all ease .5s;
+}
+
+.light-inner {
+  background: rgba(253, 206, 214, 0.1);
+}
+
+@supports (mix-blend-mode: screen) {
+  .light {
+    mix-blend-mode: screen;
+  }
+  .light-inner {
+    background: #f4193d;
+  }
+}
+
+.shadow-inner {
+  background: transparent;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lightclick-inner {
+  box-sizing: border-box;
+  height: 70px;
+  width: 70px;
+  margin-top: -35px;
+  margin-left: -35px;
+  border: 35px solid red;
+  transform: scale(0);
+}
